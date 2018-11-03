@@ -5,6 +5,7 @@
  */
 package trabalho1_grafos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class Vertice {
     
     public Vertice(int id){
         this.id = id;
+        adjacentes = new ArrayList<>();
     }
     
     public void addAresta(Vertice origem, Vertice destino, double peso ){
