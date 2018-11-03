@@ -10,8 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -55,20 +53,8 @@ public class main {
         Scanner entrada = new Scanner(System.in);
         String nomeArquivo = entrada.nextLine();
         lerArquivo(nomeArquivo, grafo);
-        grafo.mostraGrafo();
-        /*
-        
-        grafo.addVertice(1);
-        grafo.addVertice(2);
-        grafo.addVertice(3);
-        grafo.addVertice(4);
-        grafo.addAresta(1, 2, 10);
-        grafo.addAresta(2, 3, 0);
-        grafo.addAresta(2, 1, 5);
-        grafo.addAresta(1, 4, 9);
-        grafo.addAresta(3, 1, 15);
-        
-*/
+        Dijkstra d = new Dijkstra();
+        d.caminhoMinimo(grafo, grafo.getVertices().get(0));
     }
     
 }

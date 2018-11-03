@@ -55,7 +55,7 @@ public class Grafo {
     
     public void mostraGrafo(){
         for(Vertice v : this.vertices){
-            System.out.println("Vertice: "+ v.getId());
+            System.out.println("Vertice: "+ v.getId() + " Distancia" + v.getDistancia());
             for(Aresta a : v.getAdjacentes()){
                 System.out.println(a.getOrigem().getId() + " "+ a.getDestino().getId() + " " + a.getPeso() + "\n");
             }

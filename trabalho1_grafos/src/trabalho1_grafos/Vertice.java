@@ -15,6 +15,15 @@ import java.util.List;
 public class Vertice {
     private int id;
     private List<Aresta> adjacentes;
+    private double distancia;
+
+    public double getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(double distancia) {
+        this.distancia = distancia;
+    }
     
     public Vertice(int id){
         this.id = id;
