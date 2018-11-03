@@ -23,12 +23,14 @@ public class Dijkstra {
         inicializa(g,v);
         setAtual(v);
         cinza.add(v);
-        while(cinza.isEmpty()){
-            System.out.print("eba");
+        while(!cinza.isEmpty()){
             for(Aresta a: atual.getAdjacentes()){
-                cinza.add(a.getDestino());
-                if(a.getDestino().getDistancia() > atual.getDistancia() + a.getPeso()){
-                    a.getDestino().setDistancia(atual.getDistancia() + a.getPeso());
+                if(preto.indexOf(a.getDestino()) == -1){
+                    cinza.add(a.getDestino());
+                    if(a.getDestino().getDistancia() > atual.getDistancia() + a.getPeso()){
+                        a.getDestino().setDistancia(atual.getDistancia() + a.getPeso());
+                        g.getVertices().get(g.getVertices().indexOf(a.getDestino())).setDistancia(atual.getDistancia() + a.getPeso());
+                    }
                 }
             }
             cinza.remove(atual);
@@ -52,6 +54,7 @@ public class Dijkstra {
         for(Vertice v: this.cinza){
             if(v.getDistancia() < distancia)
                 menor = v;
+                distancia = menor.getDistancia();
         }
         return menor;
     }
