@@ -25,11 +25,11 @@ public class Dijkstra {
         setAtual(v);
         cinza.add(v);
         while(!cinza.isEmpty()){
-
             cinza.remove(atual);
             for(Aresta a: atual.getAdjacentes()){
-                if(preto.indexOf(a.getDestino()) == -1 && cinza.indexOf(a.getDestino()) == -1){
-                    cinza.add(a.getDestino());
+                if(preto.indexOf(a.getDestino()) == -1){
+                    if(cinza.indexOf(a.getDestino()) == -1)
+                        cinza.add(a.getDestino());
                     distancia = atual.getDistancia() + a.getPeso();
                     if(a.getDestino().getDistancia() > distancia){
                         a.getDestino().setPai(atual);
@@ -68,7 +68,7 @@ public class Dijkstra {
         this.atual = atual;
     }
 
-    public void iterator(Grafo g){
+    public void calculaTodos(Grafo g){
         for(Vertice v: g.getVertices()){
             this.caminhoMinimo(g, v);
             mostraCaminho(g,v.getId());

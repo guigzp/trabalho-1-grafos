@@ -54,9 +54,11 @@ public class main {
         String nomeArquivo = entrada.nextLine();
         lerArquivo(nomeArquivo, grafo);
         //Dijkstra d = new Dijkstra();
-        //d.iterator(grafo);
-        FloydWarshall f = new FloydWarshall();
-        f.caminhoMinimo(grafo);
+        //d.calculaTodos(grafo);
+        BellmanFord b = new BellmanFord();
+        b.calculaTodos(grafo);
+        //FloydWarshall f = new FloydWarshall();
+        //f.caminhoMinimo(grafo);
     }
     
 }
