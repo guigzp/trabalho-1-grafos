@@ -15,11 +15,13 @@ import java.util.List;
 public class BellmanFord {
     
     public void caminhoMinimo(Grafo g, Vertice vertice){
+        boolean trocou = true;
         inicializa(g,vertice);
-        for(int i = 1; i < g.getVertices().size() - 1; i++){
+        for(int i = 1; (i < g.getVertices().size() - 1) && trocou; i++){
+            trocou = false;
             for(Vertice v: g.getVertices()){
                 for(Aresta a: v.getAdjacentes())
-                    relax(a);
+                    trocou = relax(a, trocou);
             }
         }
     }
@@ -32,13 +34,15 @@ public class BellmanFord {
         ini.setDistancia(0);
     }
     
-    public void relax(Aresta a){
+    public boolean relax(Aresta a, boolean trocou){
         double distancia;
         distancia = a.getOrigem().getDistancia() + a.getPeso();
         if(a.getDestino().getDistancia() > distancia){
             a.getDestino().setPai(a.getOrigem());
             a.getDestino().setDistancia(distancia);
+            return true;
         }
+        return trocou;
     }
     
     public void calculaTodos(Grafo g){
