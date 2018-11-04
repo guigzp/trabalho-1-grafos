@@ -25,10 +25,10 @@ public class Dijkstra {
         setAtual(v);
         cinza.add(v);
         while(!cinza.isEmpty()){
-            //System.out.println("\nAtual "+ atual.getId());
+
             cinza.remove(atual);
             for(Aresta a: atual.getAdjacentes()){
-                if(preto.indexOf(a.getDestino()) == -1){
+                if(preto.indexOf(a.getDestino()) == -1 && cinza.indexOf(a.getDestino()) == -1){
                     cinza.add(a.getDestino());
                     distancia = atual.getDistancia() + a.getPeso();
                     if(a.getDestino().getDistancia() > distancia){
