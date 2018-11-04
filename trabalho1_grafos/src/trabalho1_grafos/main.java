@@ -54,7 +54,7 @@ public class main {
         String nomeArquivo = entrada.nextLine();
         lerArquivo(nomeArquivo, grafo);
         Dijkstra d = new Dijkstra();
-        d.caminhoMinimo(grafo, grafo.getVertices().get(0));
+        d.iterator(grafo);
     }
     
 }

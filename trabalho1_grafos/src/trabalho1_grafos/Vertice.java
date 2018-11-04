@@ -16,6 +16,7 @@ public class Vertice {
     private int id;
     private List<Aresta> adjacentes;
     private double distancia;
+    private Vertice pai;
 
     public double getDistancia() {
         return distancia;
@@ -45,6 +46,14 @@ public class Vertice {
 
     public List<Aresta> getAdjacentes() {
         return adjacentes;
+    }
+
+    public Vertice getPai() {
+        return pai;
+    }
+
+    public void setPai(Vertice pai) {
+        this.pai = pai;
     }
     
 }
