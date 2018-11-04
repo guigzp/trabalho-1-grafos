@@ -30,7 +30,11 @@ public class FloydWarshall {
         }
         for(int i = 0; i < tamanho; i++)
             for(int j = 0; j < tamanho; j++){
-                System.out.println(i + " " + j + " " + matriz[i][j]);
+                System.out.print(i + " " + j + " ");
+                if(matriz[i][j] == Double.POSITIVE_INFINITY)
+                    System.out.println("inf");
+                else
+                    System.out.println(matriz[i][j]);
                 mostraCaminho(i,j);
                 System.out.println("");
             }

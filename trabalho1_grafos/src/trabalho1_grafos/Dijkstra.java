@@ -78,8 +78,9 @@ public class Dijkstra {
     public void mostraCaminho(Grafo g, int id){
         List<Vertice> caminho = new ArrayList<>();
         for(Vertice v: g.getVertices()){
-            System.out.println(id + " " + v.getId() + " " + v.getDistancia());
+            System.out.print(id + " " + v.getId() + " ");
             if(v.getDistancia() != Double.POSITIVE_INFINITY){
+                System.out.println(v.getDistancia());
                 caminho.add(v);
                 while((v = v.getPai()) != null){
                     caminho.add(v);
@@ -89,6 +90,7 @@ public class Dijkstra {
                     caminho.remove(caminho.size()-1);
                 }
             } else{
+                System.out.println("inf");
                 System.out.print("Não existe caminho");
             }
             System.out.println();
