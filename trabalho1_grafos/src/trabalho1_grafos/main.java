@@ -22,14 +22,17 @@ public class main {
      * @param args the command line arguments
      */
     
-    private static void lerArquivo(String nomeArquivo, Grafo g) {
+    private static void lerArquivo(Grafo g) {
+        System.out.print("Insira o nome do arquivo de entrada: ");
+        Scanner entrada = new Scanner(System.in);
+        String nomeArquivo = entrada.nextLine();
         boolean verticesLido = false;
         try {
             FileReader arq = new FileReader(nomeArquivo);
             BufferedReader lerArq = new BufferedReader(arq);
             String linha;
-            lerArq.readLine();  // Le a primeira linha da tabela que não precisa ser armazenada
-            while ((linha = lerArq.readLine()) != null) {  // Le a tabela até o final armazenando cada linha na variavel linha
+            lerArq.readLine();
+            while ((linha = lerArq.readLine()) != null) {
                 if(linha.equals("#arestas")){
                     verticesLido = true;
                     continue;
@@ -44,21 +47,22 @@ public class main {
             arq.close();
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
+            lerArquivo(g);
         }
     }
     
     public static void main(String[] args) {
         Grafo grafo = new Grafo();
-        System.out.print("Insira o nome do arquivo de entrada: ");
-        Scanner entrada = new Scanner(System.in);
-        String nomeArquivo = entrada.nextLine();
-        lerArquivo(nomeArquivo, grafo);
-        //Dijkstra d = new Dijkstra();
-        //d.calculaTodos(grafo);
+        lerArquivo(grafo);
+        System.out.println("\nAlgoritmo Dijkstra");
+        Dijkstra d = new Dijkstra();
+        d.calculaTodos(grafo);
+        System.out.println("\nAlgoritmo Bellman Ford");
         BellmanFord b = new BellmanFord();
         b.calculaTodos(grafo);
-        //FloydWarshall f = new FloydWarshall();
-        //f.caminhoMinimo(grafo);
+        System.out.println("\nAlgoritmo Floyd Warshall");
+        FloydWarshall f = new FloydWarshall();
+        f.caminhoMinimo(grafo);
     }
     
 }

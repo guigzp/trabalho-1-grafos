@@ -62,7 +62,7 @@ public class BellmanFord {
                     caminho.remove(caminho.size()-1);
                 }
             } else{
-                System.out.print("Nao existe caminho");
+                System.out.print("Não existe caminho");
             }
             System.out.println();
         }
