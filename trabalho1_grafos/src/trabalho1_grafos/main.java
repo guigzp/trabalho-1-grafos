@@ -53,8 +53,10 @@ public class main {
         Scanner entrada = new Scanner(System.in);
         String nomeArquivo = entrada.nextLine();
         lerArquivo(nomeArquivo, grafo);
-        Dijkstra d = new Dijkstra();
-        d.iterator(grafo);
+        //Dijkstra d = new Dijkstra();
+        //d.iterator(grafo);
+        FloydWarshall f = new FloydWarshall();
+        f.caminhoMinimo(grafo);
     }
     
 }
