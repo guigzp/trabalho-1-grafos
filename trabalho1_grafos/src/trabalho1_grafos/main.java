@@ -54,15 +54,37 @@ public class main {
     public static void main(String[] args) {
         Grafo grafo = new Grafo();
         lerArquivo(grafo);
-        System.out.println("\nAlgoritmo Dijkstra");
-        Dijkstra d = new Dijkstra();
-        d.calculaTodos(grafo);
-        System.out.println("\nAlgoritmo Bellman Ford");
-        BellmanFord b = new BellmanFord();
-        b.calculaTodos(grafo);
-        System.out.println("\nAlgoritmo Floyd Warshall");
-        FloydWarshall f = new FloydWarshall();
-        f.caminhoMinimo(grafo);
+        int opcao = 1;
+        Scanner entrada = new Scanner(System.in);
+        while(opcao < 4 && opcao > 0){
+            System.out.println("\n1) Importar outro arquivo \n2) Algoritmo de Dijkstra \n3) Algoritmo de Bellman Ford"
+                    + " \n4) Algoritmo de Floyd Warshall \nEscolha sua opção: ");
+            opcao = entrada.nextInt();
+            switch(opcao){
+                case 1:
+                    grafo = new Grafo();
+                    lerArquivo(grafo);
+                    break;
+                case 2:
+                    System.out.println("\nAlgoritmo Dijkstra");
+                    Dijkstra d = new Dijkstra();
+                    d.calculaTodos(grafo);
+                    break;
+                case 3:
+                    System.out.println("\nAlgoritmo Bellman Ford");
+                    BellmanFord b = new BellmanFord();
+                    b.calculaTodos(grafo);
+                    break;
+                case 4:
+                    System.out.println("\nAlgoritmo Floyd Warshall");
+                    FloydWarshall f = new FloydWarshall();
+                    f.caminhoMinimo(grafo);
+                    break;
+                default:
+                    System.out.println("\nEncerrando o programa!");
+                    break;
+            }
+        }
     }
     
 }
